@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date and Month</title>
+</head>
+<body>
+
+<h1>Date and Month</h1>
+
+
+<select onchange= "selectedMonth()" name="months" id="mths">
+  <option value=0>Select a Month</option>
+ <option value=1>Jan</option>
+  <option value=2>Feb</option>
+  <option value=3>Mar</option>
+  <option value=4>Apr</option>
+  <option value=5>May</option>
+  <option value=6>Jun</option>
+  <option value=7>Jul</option>
+  <option value=8>Aug</option>
+  <option value=9>Sep</option>
+  <option value=10>Oct</option>
+  <option value=11>Nov</option>
+  <option value=12>Dec</option>
+  </select>
+  
+  
+<br><br>
+<input onchange="handleChange(this)" type="number" id="dt" max=31  placeholder="Input Date" style="background:yellow; display:none;  " />
+<script>
+
+maxdate=0
+
+function selectedMonth()
+{
+daysArray=[0,31,28,31,30,31,30,31,31,30,31,30,31]
+selectedMonthValue = document.getElementById("mths").value
+//alert(selectedMonthValue)
+if (selectedMonthValue >=1){ document.getElementById("dt").style.display ="block";    }
+maxdate =daysArray[selectedMonthValue]
+document.getElementById("dt").value = "";    
+document.getElementById("dt").max = maxdate
+}
+
+  function handleChange(input) {
+       if (input.value <1)  input.value = '';
+       if (input.value > maxdate) input.value = '';
+  }
+</script>
+
+</body>
+</html>
