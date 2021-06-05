@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Date and Month</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+table {border-collapse:collapse; border:1px solid black; }
+td:hover{background:cyan}
+td{width:30px; height:30px; text-align:center}
+.mon td{ width:50px; height:30px; text-align:center}
+
+
+</style>
+</head>
+<body>
+
+<h1 onclick="showagain()" >Month and Date</h1>
+<div id='div1'>
+<p>Months</p>
+<table onclick="tblclick()" class='mon' border=1 id='t1'>
+<tr><td>Jan<td>Feb<td>Mar</tr>
+<tr><td>Apr<td>May<td>Jun</tr>
+<tr><td>Jul<td>Aug<td>Sept</tr>
+<tr><td>Oct<td>Nov<td>Dec</tr>
+</table>
+</div>
+<br>
+<div id='div2'  style="display:none">
+<p>Dates</p>
+<table onclick="tbl2click()" border=1 id='t2' >
+<tr><td>1<td>2<td>3<td>4<td>5<td>6<td>7</tr>
+<tr><td>8<td>9<td>10<td>11<td>12<td>13<td>14</tr>
+<tr><td>15<td>16<td>17<td>18<td>19<td>20<td>21</tr>
+<tr><td>22<td>23<td>24<td>25<td>26<td>27<td>28</tr>
+<tr><td>29<td>30<td>31<td><td><td><td></tr>
+
+
+</table>
+</div>
+<p id='gotdates'></p>
+<script>
+MonthsArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+MonthDays =[31,28,31,30,31,30,31,31,30,31,30,31]
+function tableClick(table){
+if (table != null) {
+    for (var i = 0; i < table.rows.length; i++) {
+        for (var j = 0; j < table.rows[i].cells.length; j++)
+        table.rows[i].cells[j].onclick = function () {
+            tableText(this);
+        };
+    }
+}}
+mth=""
+dt1=""
+ month = tableClick(t1)
+ dt = tableClick(t2)
+glob=''
+
+function tableText(tableCell) {
+  glob = tableCell.innerHTML;
+//  alert(glob)
+
+}
+//mth=glob
+
+function tblclick(){
+document.getElementById("div2").style.display = "block";
+document.getElementById("div1").style.display = "none";
+mth=glob;
+}
+
+function tbl2click(){
+document.getElementById("div2").style.display = "none";
+document.getElementById("div1").style.display = "none";
+dt1=glob;
+
+validateDates()
+}
+
+function validateDates(){
+result = MonthDays[MonthsArray.indexOf(mth)]
+
+if (dt1 > result || dt1.length=== 0 ){alert("Invalid Date")
+document.getElementById("div1").style.display = "block";
+
+//document.getElementById("t1").style.display = "none";
+}else{document.getElementById("gotdates").innerHTML="Month: "+mth+" and Date is : "+ dt1}
+}
+
+function showagain(){
+document.getElementById("div1").style.display = "block";
+document.getElementById("gotdates").innerHTML=""
+}
+
+</script>
+
+</body>
+</html>
