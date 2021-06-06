@@ -1,7 +1,6 @@
+
 <!DOCTYPE html>
 <html>
-  <title>Date and Month</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 table {border-collapse:collapse; border:1px solid black }
 td:hover{background:cyan; }
@@ -11,7 +10,7 @@ td {height:30px; width:30px; text-align:center }
 <body>
 
 <h2>Month and Day Selector</h2>
-<h2 id="mthdt"></h2>
+<h2 id="mthdt">Selected: </h2>
 
 
 <p>
@@ -20,14 +19,11 @@ td {height:30px; width:30px; text-align:center }
 <tr><td>Apr<td>May<td>Jun</tr>
 <tr><td>Jul<td>Aug<td>Sep</tr>
 <tr><td>Oct<td>Nov<td>Dec</tr>
-
-
 </table>
 
 </p>
 
-<p id="demo" style=" 
-  width:300px; margin:0; "></p>
+<p id="demo" style="   width:300px; margin:0; "></p>
 
 <script>
 result=""
@@ -65,15 +61,16 @@ xx=""
 for (i=1; i<=x; i++){xx +="<td>"+i
 if(i%7 ===0){xx +="</tr><tr>"}
 }
-z="<table onclick='tbl2click()'  id='days' border=1> <tr>" +xx + "</table>"
+z="<table width=231 onclick='tbl2click()'  id='days' border=1> <tr>" +xx + "</table>"
 document.getElementById("demo").innerHTML = z;
+document.getElementById("mthdt").innerHTML = "Selected:  " + mth +" / "
 tableClick(days)
 }
 
 function tbl2click(){
 tableClick(days)
 dt1=glob;
-document.getElementById("mthdt").innerHTML = "Selected: " + mth+"/"+ dt1
+document.getElementById("mthdt").innerHTML  =  "Selected: " + mth+ " / " + dt1
 }
 tbl2click()
 
