@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<style>
+table {border-collapse:collapse; border:1px solid black }
+td:hover{background:cyan; }
+td {height:30px; width:30px; text-align:center }
+
+</style>
+<body>
+
+<h2>Month and Day Selector</h2>
+<h2 id="mthdt"></h2>
+
+
+<p>
+<table onclick="tblclick()" id='months' border=1 width=231>
+<tr><td>Jan<td>Feb<td>Mar</tr>
+<tr><td>Apr<td>May<td>Jun</tr>
+<tr><td>Jul<td>Aug<td>Sep</tr>
+<tr><td>Oct<td>Nov<td>Dec</tr>
+
+
+</table>
+
+</p>
+
+<p id="demo" style=" 
+  width:300px; margin:0; "></p>
+
+<script>
+result=""
+dt1=""
+monthsArray =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+dayaArray = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+function tableClick(table){
+if (table != null) {
+    for (var i = 0; i < table.rows.length; i++) {
+        for (var j = 0; j < table.rows[i].cells.length; j++)
+        table.rows[i].cells[j].onclick = function () {
+            tableText(this);
+        };
+    }
+}}
+glob=""
+ tableClick(months)
+ 
+
+function tableText(tableCell) {
+  glob = tableCell.innerHTML;
+}
+
+function tblclick(){
+mth=glob;
+result = dayaArray[monthsArray.indexOf(mth)]
+mthtable()
+}
+
+mthtable()
+function mthtable(){
+x=result
+xx=""
+for (i=1; i<=x; i++){xx +="<td>"+i
+if(i%7 ===0){xx +="</tr><tr>"}
+}
+z="<table onclick='tbl2click()'  id='days' border=1> <tr>" +xx + "</table>"
+document.getElementById("demo").innerHTML = z;
+tableClick(days)
+}
+
+function tbl2click(){
+tableClick(days)
+dt1=glob;
+document.getElementById("mthdt").innerHTML = "Selected: " + mth+"/"+ dt1
+}
+tbl2click()
+
+</script>
+
+</body>
+</html>
